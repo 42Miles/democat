@@ -11,7 +11,7 @@ public class Data {
     private String heroClass;
     @Column(length = 2048)
     private String heroName;
-    private String weapon;
+    private String level;
     @Transient
     boolean newuser;
 
@@ -20,7 +20,7 @@ public class Data {
         this.username = username;
         this.heroClass = heroClass;
         this.heroName = heroName;
-        this.weapon = weapon;
+        this.level = level;
         this.newuser = newuser;
     }
 
@@ -28,7 +28,7 @@ public class Data {
         this.username = username;
         this.heroClass = heroClass;
         this.heroName = heroName;
-        this.weapon = weapon;
+        this.level = level;
         this.newuser = newuser;
     }
 
@@ -69,11 +69,11 @@ public class Data {
     }
 
     public String getWeapon() {
-        return weapon;
+        return level;
     }
 
     public void setWeapon(String weapon) {
-        this.weapon = weapon;
+        this.level = level;
     }
 
     public boolean isNewuser() {
@@ -91,7 +91,7 @@ public class Data {
                 ", username='" + username + '\'' +
                 ", heroClass='" + heroClass + '\'' +
                 ", heroName='" + heroName + '\'' +
-                ", weapon='" + weapon + '\'' +
+                ", level='" + level + '\'' +
                 ", newuser=" + newuser +
                 '}';
     }

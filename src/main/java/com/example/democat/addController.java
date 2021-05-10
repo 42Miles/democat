@@ -23,11 +23,11 @@ class addControler {
             @RequestParam("username") String username,
             @RequestParam("heroClass") String heroClass,
             @RequestParam("heroName") String heroName,
-            @RequestParam("weapon") String weapon,
+            @RequestParam("level") String level,
             Model model)
             throws Exception {
 
-        Data data = new Data(username, heroClass, heroName, weapon, true);
+        Data data = new Data(username, heroClass, heroName, level, true);
         System.out.println(data);
         DataRepo.save(data);
         model.addAttribute("data", data);
