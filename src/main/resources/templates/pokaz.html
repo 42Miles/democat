@@ -8,12 +8,12 @@
 <body>
 <p align="center"> <h2>Hero List</h2></p> <br>
 <table class="table table-striped">
-    <tr><th>Username</th><th>Hero Class</th><th>Hero Name</th><th>Weapon</th></tr>
+    <tr><th>Username</th><th>Hero Class</th><th>Hero Name</th><th>Level</th></tr>
     <tr  th:each="wpis: ${users}">
 
-        <td th:text="${wpis.username}">Imię</td>
-        <td th:text="${wpis.heroClass}">Nazwisko</td>
-        <td th:text="${wpis.heroName}">Telefon</td>
-        <td th:text="${wpis.level}">e-mail</td></tr>
+        <td th:text="${wpis.username}">Username</td>
+        <td th:text="${wpis.heroClass}">Class</td>
+        <td th:text="${wpis.heroName}">Hero name</td>
+        <td th:text="${wpis.level}">Level</td></tr>
 
 </table></body></html>

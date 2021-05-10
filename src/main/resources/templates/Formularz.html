@@ -9,25 +9,53 @@
 <body>
 <form action="http://localhost:8080/dodaj">
     <table>
-        <tr>
-            <td>Enter your username </td>
-            <td><input name="username"></td>
-        </tr>
-        <tr>
-            <td>Enter your hero class</td>
-            <td> <input name="heroClass"> </td>
-        </tr>
-        <tr>
-            <td>Enter your hero name</td>
-            <td><input name="heroName"></td>
-        </tr>
-        <tr>
-            <td>     Enter your level    </td>
-            <td><input name="level"></td>
-        </tr>
-        <tr>
+        <div class="col-md-4 mb-3">
+            <label for="validationTooltipUsername"></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                </div>
+                <input name="username" type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+                <div class="invalid-tooltip">
+                    Please choose a unique and valid username.
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Hero Name</span>
+            <input name="heroName" type="text" class="form-control" aria-label="Sizing example input" placeholder="Hero Name" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inlineFormCustomSelectPref">Hero Class</label>
+                </div>
+                <select name="heroClass" class="custom-select" id="inlineFormCustomSelectPref">
+                    <option selected>Hero class</option>
+                    <option value="Warrior">Warrior</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Hunter">Hunter</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Priest">Priest</option>
+                    <option value="Shaman">Shaman</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Warlock">Warlock</option>
+                    <option value="Druid">Druid</option>
+                </select>
+                <div class="invalid-feedback">Chose class of your hero!</div>
+            </div>
+
+        <div class="col-md-4 mb-3">
+            <span class="input-group-text" id="inputGroup-Level">Level</span>
+            <input name="heroName" type="text" class="form-control" aria-label="Sizing example input" placeholder="Level" aria-describedby="inputGroup-sizing-default">
+        </div>
+        </div>
+
+
             <td colspan="2">
-                <input type="submit"></td>
+                <button type="button" class="btn btn-outline-dark">Select</button>
     </table>
 </form>
 </body>

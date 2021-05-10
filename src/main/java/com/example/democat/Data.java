@@ -15,7 +15,7 @@ public class Data {
     @Transient
     boolean newuser;
 
-    public Data(Integer id, String username, String heroClass, String heroName, String weapon, boolean newuser) {
+    public Data(Integer id, String username, String heroClass, String heroName, String level, boolean newuser) {
         this.id = id;
         this.username = username;
         this.heroClass = heroClass;
@@ -24,7 +24,7 @@ public class Data {
         this.newuser = newuser;
     }
 
-    public Data(String username, String heroClass, String heroName, String weapon, boolean newuser) {
+    public Data(String username, String heroClass, String heroName, String level, boolean newuser) {
         this.username = username;
         this.heroClass = heroClass;
         this.heroName = heroName;
@@ -68,11 +68,11 @@ public class Data {
         this.heroName = heroName;
     }
 
-    public String getWeapon() {
+    public String getLevel() {
         return level;
     }
 
-    public void setWeapon(String weapon) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
