@@ -1,0 +1,20 @@
+2021-05-10 21:52:38 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DELETE *[*] FROM HERO_LIST"; ожидалось "identifier"
+Syntax error in SQL statement "DELETE *[*] FROM HERO_LIST"; expected "identifier"; SQL statement:
+DELETE * FROM HERO_LIST [42001-200]
+2021-05-10 21:54:14 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM HERO_LIST AND DELETE[*]"
+Syntax error in SQL statement "SELECT * FROM HERO_LIST AND DELETE[*]"; SQL statement:
+SELECT * FROM HERO_LIST AND DELETE [42000-200]
+2021-05-10 21:54:41 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DROP HERO_LIST[*]"; ожидалось "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"
+Syntax error in SQL statement "DROP HERO_LIST[*]"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP HERO_LIST [42001-200]
+2021-05-10 21:56:05 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "DROP TABELE[*] HERO_LIST"; ожидалось "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"
+Syntax error in SQL statement "DROP TABELE[*] HERO_LIST"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP TABELE HERO_LIST [42001-200]
+2021-05-10 21:58:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "HERO_LIST" не найдена
+Table "HERO_LIST" not found; SQL statement:
+insert into hero_list (id, hero_class, hero_name, level, username) values (null, ?, ?, ?, ?) [42102-200]
