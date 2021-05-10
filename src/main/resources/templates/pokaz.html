@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+<body>
+<p align="center"> <h2>Hero List</h2></p> <br>
+<table class="table table-striped">
+    <tr><th>Username</th><th>Hero Class</th><th>Hero Name</th><th>Weapon</th></tr>
+    <tr  th:each="wpis: ${users}">
+
+        <td th:text="${wpis.username}">Imię</td>
+        <td th:text="${wpis.heroClass}">Nazwisko</td>
+        <td th:text="${wpis.heroName}">Telefon</td>
+        <td th:text="${wpis.weapon}">e-mail</td></tr>
+
+</table></body></html>
