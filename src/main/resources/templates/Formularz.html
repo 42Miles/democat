@@ -10,7 +10,7 @@
 <form action="http://localhost:8080/dodaj">
     <table>
         <div class="col-md-4 mb-3">
-            <label for="validationTooltipUsername"></label>
+            <label for="validationTooltipUsername" class="form-label">Enter your username</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
@@ -23,16 +23,16 @@
         </div>
         </div>
 
+        <label for="validationTooltipUsername" class="form-label">Choose a name for your hero</label>
         <div class="col-md-4 mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Hero Name</span>
             <input name="heroName" type="text" class="form-control" aria-label="Sizing example input" placeholder="Hero Name" aria-describedby="inputGroup-sizing-default">
         </div>
 
+
+        <label for="validationTooltipUsername" class="form-label">Choose a class</label>
             <div class="col-md-4 mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inlineFormCustomSelectPref">Hero Class</label>
-                </div>
-                <select name="heroClass" class="custom-select" id="inlineFormCustomSelectPref">
+
+                <select name="heroClass" class="form-select" id="inlineFormCustomSelectPref">
                     <option selected>Hero class</option>
                     <option value="Warrior">Warrior</option>
                     <option value="Paladin">Paladin</option>
@@ -47,8 +47,8 @@
                 <div class="invalid-feedback">Chose class of your hero!</div>
             </div>
 
+        <label for="validationTooltipUsername" class="form-label">Enter hero level</label>
         <div class="col-md-4 mb-3">
-            <span class="input-group-text" id="inputGroup-Level">Level</span>
             <input name="level" type="text" class="form-control" aria-label="Sizing example input" placeholder="Level" aria-describedby="inputGroup-sizing-default">
         </div>
         </div>
