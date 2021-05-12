@@ -1,4 +1,8 @@
 package com.example.democat;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 
 @Entity
@@ -83,7 +87,7 @@ public class Data {
     public void setNewuser(boolean newuser) {
         this.newuser = newuser;
     }
-
+    //@Scope(proxyMode = ScopedProxyMode.INTERFACES)
     @Override
     public String toString() {
         return "DB{" +
