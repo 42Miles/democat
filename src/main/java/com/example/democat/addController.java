@@ -66,6 +66,11 @@ class addControler {
         model.addAttribute("users", data);
         return "Widok";
     }
+    @RequestMapping("/wyszukaj")
+    public String wyszukaj(@RequestParam("criterion") String criterion, Model model){
+        model.addAttribute("users", DataRepo.findAllByusername(criterion));
+        return "pokaz";
+    }
 
 
 }

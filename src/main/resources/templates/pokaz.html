@@ -8,7 +8,7 @@
 <body>
 <p align="center"> <h2>Hero List</h2></p> <br>
 <table class="table table-striped">
-    <tr><th>Username</th><th>Hero Class</th><th>Hero Name</th><th>Level</th><th>Kasuj</th></tr>
+    <tr><th>Username</th><th>Hero Class</th><th>Hero Name</th><th>Level</th><th>Cancel</th></tr>
     <tr  th:each="wpis: ${users}">
 
         <td th:text="${wpis.username}">Username</td>
@@ -18,6 +18,12 @@
         <td>
             <a href="#" th:href="@{/kasuj(id=${wpis.id})}" class="btn btn-danger">
 
-                <i class="fa fa-trash-o fa-lg"></i>Kasuj</a></td>
+                <i class="fa fa-trash-o fa-lg"></i>Cancel</a></td>
+
+        <table class="table table-striped">
+            <tr><td> Find user by username</td><td><form action="http://localhost:8080/wyszukaj"><input name="criterion"></td><td><input type="submit"></form></td></tr>
+
+        </table>
+
 
 </table></body></html>
