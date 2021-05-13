@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Aktualizuj</title>
+    </head>
+<body>
+<form   th:action="@{/aktualizuj}" th:object="${user}">
+
+    <table>
+        <tr>
+            <td>Podaj imię </td>
+            <td><input name="username" th:field="*{username}"> </td>
+        </tr>
+        <tr>
+            <td>Podaj nazwisko</td>
+            <td> <input name="heroName" th:field="*{heroName}"> </td>
+        </tr>
+        <tr>
+            <td>    Podaj telefon</td>
+            <td><input name="heroClass" th:field="*{heroClass}"></td>
+        </tr>
+        <tr>
+            <td>     Podaj opis </td>
+            <td><input name="level" th:field="*{level}">
+                <input type="hidden" name="id" th:field="*{id}"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit"></td>
+    </table>
+</form>
+</body>
+</html>

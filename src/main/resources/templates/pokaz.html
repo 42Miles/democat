@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+<body>
+<p align="center"> <h2>Hero list</h2></p> <br>
+
+<table  class="table table-striped">
+    <tr><th>Username</th><th>Hero Name</th><th>Hero Class</th><th>Level</th><th>Cancel</th><th>Update</th></tr>
+
+    <tr  th:each="wpis: ${user}"> <td th:text="${wpis.username}">Username</td>
+        <td th:text="${wpis.heroName}">Hero name</td>
+        <td th:text="${wpis.heroClass}">Hero class</td>
+        <td th:text="${wpis.level}">Level</td>
+
+
+        <td>
+            <a href="#" th:href="@{/kasuj(id=${wpis.id})}" class="btn btn-danger">
+
+                <i class="fa fa-trash-o fa-lg"></i>Cancel</a></td>
+
+
+        <td>
+            <a href="#" th:href="@{/przekieruj(id=${wpis.id})}" class="btn btn-primary">
+
+                <i class="fa fa-trash-o fa-lg"></i>Update</a></td>
+
+    </tr>
+
+</table>
+
+<table class="table table-striped">
+    <tr><td> Find user by username</td><td><form action="http://localhost:8080/wyszukaj"><input name="kryterium"></td><td><input type="submit"></form></td></tr>
+
+</table>
+
+</body>
+</html>
