@@ -1,13 +1,10 @@
 package com.example.democat;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="HeroList")
-public class Data {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,26 +14,26 @@ public class Data {
     private String heroName;
     private String level;
     @Transient
-    boolean newuser;
+    boolean nowy;
 
-    public Data(Integer id, String username, String heroClass, String heroName, String level, boolean newuser) {
+    public User(Integer id, String username, String heroClass, String heroName, String level, boolean nowy) {
         this.id = id;
         this.username = username;
         this.heroClass = heroClass;
         this.heroName = heroName;
         this.level = level;
-        this.newuser = newuser;
+        this.nowy = nowy;
     }
 
-    public Data(String username, String heroClass, String heroName, String level, boolean newuser) {
+    public User(String username, String heroClass, String heroName, String level, boolean nowy) {
         this.username = username;
         this.heroClass = heroClass;
         this.heroName = heroName;
         this.level = level;
-        this.newuser = newuser;
+        this.nowy = nowy;
     }
 
-    public Data() {
+    public User() {
 
     }
 
@@ -80,23 +77,23 @@ public class Data {
         this.level = level;
     }
 
-    public boolean isNewuser() {
-        return newuser;
+    public boolean isNowy() {
+        return nowy;
     }
 
-    public void setNewuser(boolean newuser) {
-        this.newuser = newuser;
+    public void setNowy(boolean nowy) {
+        this.nowy = nowy;
     }
     //@Scope(proxyMode = ScopedProxyMode.INTERFACES)
     @Override
     public String toString() {
-        return "DB{" +
+        return "Data{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", heroClass='" + heroClass + '\'' +
                 ", heroName='" + heroName + '\'' +
                 ", level='" + level + '\'' +
-                ", newuser=" + newuser +
+                ", newuser=" + nowy +
                 '}';
     }
 }

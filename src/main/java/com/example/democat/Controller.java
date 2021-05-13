@@ -5,18 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 @Controller
 class addControler {
-    private DataRepo DataRepo;
+    private UserRepo userRepo;
     @Autowired
-    public addControler(DataRepo dataRepo) {
-
-        this.DataRepo = dataRepo;
+    public addControler(UserRepo userRepo) {
+        this.userRepo = userRepo;
     }
 
     @RequestMapping("/form")
     public String dodajemyDane(){ return "Formularz"; }
-
 
     @RequestMapping("/dodaj")
     public String dodajemyDane(
@@ -26,29 +25,34 @@ class addControler {
             @RequestParam("level") String level,
             Model model)
             throws Exception {
-
-        Data data = new Data(username, heroClass, heroName, level, true);
-        System.out.println(data);
-        DataRepo.save(data);
-        model.addAttribute("data", data);
+        User user = new User(username, heroClass, heroName, level, true);
+        System.out.println(user);
+        userRepo.save(user);
+        model.addAttribute("user", user);
         return "Widok";
     }
 
     @RequestMapping("/pokaz")
-    public String pokaz( Model model) {
-        //int i = 0;
-        for (Data users : DataRepo.findAll()) {
-            System.out.println(users);
+    public String pokaz( Model model){
+        for (User user : userRepo.findAll()) {
+            System.out.println(user);
         }
-        model.addAttribute("users", DataRepo.findAll());
+
+        model.addAttribute("user", userRepo.findAll());
         return "pokaz";
     }
 
     @RequestMapping("/kasuj")
     public String kasuj(@RequestParam("id") Integer id, Model model){
+        userRepo.deleteById(id);
 
-            DataRepo.deleteById(id);
-        model.addAttribute("users", DataRepo.findAll());
+        model.addAttribute("user", userRepo.findAll());
+        return "pokaz";
+    }
+
+    @RequestMapping("/wyszukaj")
+    public String wyszukaj(@RequestParam("kryterium") String kryterium, Model model){
+        model.addAttribute("user", userRepo.findAllByusername(kryterium));
         return "pokaz";
     }
 
@@ -58,18 +62,24 @@ class addControler {
             @RequestParam("username") String username,
             @RequestParam("heroClass") String heroClass,
             @RequestParam("heroName") String heroName,
-            @RequestParam("level") String level, Model model)
+            @RequestParam("level") String level,
+            Model model)
             throws Exception {
-        Data data = new Data(id, username, heroClass, heroName, level, true);
-        System.out.println(data);
-        DataRepo.save(data);
-        model.addAttribute("users", data);
+        User user = new User(id, username, heroClass, heroName, level, true);
+        System.out.println(user);
+        userRepo.save(user);
+        model.addAttribute("user", user);
         return "Widok";
     }
-    @RequestMapping("/wyszukaj")
-    public String wyszukaj(@RequestParam("criterion") String criterion, Model model){
-        model.addAttribute("users", DataRepo.findAllByusername(criterion));
-        return "pokaz";
+
+    @RequestMapping("/przekieruj")
+    public String przekieruj(
+            @RequestParam("id") Integer id, Model model
+    )
+            throws Exception {
+        System.out.println(userRepo.findById(id));
+        model.addAttribute("user", userRepo.findById(id));
+        return "aktualizuj";
     }
 
 
