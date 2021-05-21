@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding to the Hero List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <form action="http://localhost:8080/dodaj">
+        <table>
+            <div class="col-md-4 mb-2">
+                <label for="validationTooltipUsername" class="form-label">Enter your username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                    </div>
+                    <input name="username" type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+                    <div class="invalid-tooltip">
+                        Please choose a unique and valid username.
+                    </div>
+                </div>
+            </div>
+        </table>
+
+
+        <label for="validationTooltipUsername" class="form-label">Choose a name for your hero</label>
+        <div class="col-md-4 mb-3">
+            <input name="heroName" type="text" class="form-control" aria-label="Sizing example input" placeholder="Hero Name" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+        <label for="validationTooltipUsername" class="form-label">Choose a class</label>
+        <div class="col-md-4 mb-3">
+
+            <select name="heroClass" class="form-select" id="inlineFormCustomSelectPref">
+                <option selected>Hero class</option>
+                <option value="Warrior">Warrior</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Hunter">Hunter</option>
+                <option value="Rogue">Rogue</option>
+                <option value="Priest">Priest</option>
+                <option value="Shaman">Shaman</option>
+                <option value="Mage">Mage</option>
+                <option value="Warlock">Warlock</option>
+                <option value="Druid">Druid</option>
+            </select>
+            <div class="invalid-feedback">Chose class of your hero!</div>
+        </div>
+
+        <label for="validationTooltipUsername" class="form-label">Enter hero level</label>
+        <div class="col-md-4 mb-3">
+            <input name="level" type="text" class="form-control" aria-label="Sizing example input" placeholder="Level" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+        <td colspan="2">
+            <button type="Submit" class="btn btn-outline-dark">Submit</button>
+        </td>
+        </table>
+    </form>
+</div>
+</body>
+</html>
