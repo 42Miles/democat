@@ -1,9 +1,8 @@
 package com.example.democat.Controllers;
 
-import com.example.democat.Models.Hero;
 import com.example.democat.Models.User;
 import com.example.democat.Repositories.UserRepo;
-import com.example.democat.Repositories.heroRepo;
+import com.example.democat.Repositories.HeroRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,14 +46,8 @@ class MainController {
         model.addAttribute("user", userRepo.findAll());
         return "pokaz";
     }
-/*    @RequestMapping("/yourHero")
-    public String yourHero( Model model){
 
 
-        model.addAttribute("hero", heroRepo.findAll());
-        return "yourHero";
-    }
-*/
     @RequestMapping("/kasuj")
     public String kasuj(@RequestParam("id") Integer id, Model model){
         userRepo.deleteById(id);
@@ -68,13 +61,8 @@ class MainController {
         model.addAttribute("user", userRepo.findAllByusername(kryterium));
         return "pokaz";
     }
-/*
-    @RequestMapping("/search")
-    public String search(@RequestParam("kryterium") String kryterium, Model model){
-        model.addAttribute("hero", heroRepo.findAllByheroName(kryterium));
-        return "yourHero";
-    }
-*/
+
+
     @RequestMapping("/aktualizuj")
     public String update(
             //@RequestParam("id") Integer id,
