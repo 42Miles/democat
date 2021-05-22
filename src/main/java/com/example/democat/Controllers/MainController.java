@@ -1,5 +1,9 @@
-package com.example.democat;
+package com.example.democat.Controllers;
 
+import com.example.democat.Models.Hero;
+import com.example.democat.Models.User;
+import com.example.democat.Repositories.UserRepo;
+import com.example.democat.Repositories.heroRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-class addControler {
+class MainController {
     private UserRepo userRepo;
     @Autowired
-    public addControler(UserRepo userRepo) {
+    public MainController(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
 
@@ -20,12 +24,13 @@ class addControler {
     @RequestMapping("/dodaj")
     public String dodajemyDane(
             @RequestParam("username") String username,
-            @RequestParam("heroClass") String heroClass,
-            @RequestParam("heroName") String heroName,
-            @RequestParam("level") String level,
+            @RequestParam("hero") String hero,
+            //@RequestParam("heroClass") String heroClass,
+            //@RequestParam("heroName") String heroName,
+            //@RequestParam("level") String level,
             Model model)
             throws Exception {
-        User user = new User(username, heroClass, heroName, level, true);
+        User user = new User(username, hero);
         System.out.println(user);
         userRepo.save(user);
         model.addAttribute("user", user);
@@ -38,10 +43,18 @@ class addControler {
             System.out.println(user);
         }
 
+
         model.addAttribute("user", userRepo.findAll());
         return "pokaz";
     }
+/*    @RequestMapping("/yourHero")
+    public String yourHero( Model model){
 
+
+        model.addAttribute("hero", heroRepo.findAll());
+        return "yourHero";
+    }
+*/
     @RequestMapping("/kasuj")
     public String kasuj(@RequestParam("id") Integer id, Model model){
         userRepo.deleteById(id);
@@ -55,17 +68,24 @@ class addControler {
         model.addAttribute("user", userRepo.findAllByusername(kryterium));
         return "pokaz";
     }
-
+/*
+    @RequestMapping("/search")
+    public String search(@RequestParam("kryterium") String kryterium, Model model){
+        model.addAttribute("hero", heroRepo.findAllByheroName(kryterium));
+        return "yourHero";
+    }
+*/
     @RequestMapping("/aktualizuj")
     public String update(
-            @RequestParam("id") Integer id,
+            //@RequestParam("id") Integer id,
             @RequestParam("username") String username,
-            @RequestParam("heroClass") String heroClass,
-            @RequestParam("heroName") String heroName,
-            @RequestParam("level") String level,
+            @RequestParam("hero") String hero,
+            //@RequestParam("heroClass") String heroClass,
+            //@RequestParam("heroName") String heroName,
+            //@RequestParam("level") String level,
             Model model)
             throws Exception {
-        User user = new User(id, username, heroClass, heroName, level, true);
+        User user = new User(username, hero);
         System.out.println(user);
         userRepo.save(user);
         model.addAttribute("user", user);
@@ -81,6 +101,21 @@ class addControler {
         model.addAttribute("user", userRepo.findById(id));
         return "aktualizuj";
     }
+
+    @RequestMapping("/save")
+    public String dodajemyDane(
+            //@RequestParam("id") Integer id,
+            @RequestParam("hero") String hero,
+            @RequestParam("username") String username)
+            //@RequestParam("heroClass") String heroClass,
+            //@RequestParam("heroName") String heroName,
+            //@RequestParam("level") String level)
+            throws Exception
+    {
+        User user = new User(username, hero);
+        //heroRepo.save(hero);
+        userRepo.save(user);
+        return "user: "+user+", hero=" + hero; }
 
 
 }

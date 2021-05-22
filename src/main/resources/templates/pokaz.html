@@ -21,7 +21,7 @@
             </button>
 
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">
 
                 <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
       <span class="navbar-text">
@@ -39,7 +39,7 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div>-->
 
 
                 <form class="d-flex" action="http://localhost:8080/wyszukaj">
@@ -54,18 +54,22 @@
     <thead>
     <tr>
         <th scope="col">Username</th>
-        <th scope="col">Hero name</th>
+        <th scope="col">Your hero</th>
+        <!--<th scope="col">Hero name</th>
         <th scope="col">Hero class</th>
-        <th scope="col">Level</th>
+        <th scope="col">Level</th>-->
         <th scope="col">Cancel</th>
         <th scope="col">Update</th>
     </tr>
     </thead>
     <tbody>
-    <tr  th:each="wpis: ${user}"> <td th:text="${wpis.username}">Username</td>
-        <td th:text="${wpis.heroName}">Hero name</td>
+    <tr  th:each="wpis: ${user}">
+        <td th:text="${wpis.username}">Username</td>
+        <!--<td th:text="${wpis.hero}">Hero</td>-->
+
+        <!--<td th:text="${wpis.heroName}">Hero name</td>
         <td th:text="${wpis.heroClass}">Hero class</td>
-        <td th:text="${wpis.level}">Level</td>
+        <td th:text="${wpis.level}">Level</td>-->
 
 
         <td>
