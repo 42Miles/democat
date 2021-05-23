@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 class HeroController {
@@ -17,10 +18,10 @@ class HeroController {
         this.heroRepo = heroRepo;
     }
 
-    @RequestMapping("/form")
-    public String dodajemyDane(){ return "Formularz"; }
+    @RequestMapping("/addHero")
+    public String dodajemyDane(){ return "heroAdd"; }
 
-    @RequestMapping("/dodaj")
+    @RequestMapping("/add")
     public String dodajemyDane(
             //@RequestParam("username") String username,
             @RequestParam("heroClass") String heroClass,
@@ -33,39 +34,35 @@ class HeroController {
         System.out.println(hero);
         heroRepo.save(hero);
         model.addAttribute("hero", hero);
-        return "Widok";
+        return "Widok2";
     }
 
-    @RequestMapping("/pokaz")
+    @RequestMapping("/show")
     public String pokaz( Model model){
         for (Hero hero : heroRepo.findAll()) {
             System.out.println(hero);
         }
-
-
         model.addAttribute("user", heroRepo.findAll());
-        return "pokaz";
+        return "yourHero";
     }
     @RequestMapping("/yourHero")
     public String yourHero( Model model){
+        model.addAttribute("hero", heroRepo.findAll());
+        return "yourHero";
+    }
 
+    @RequestMapping("/delete")
+    public String kasuj(@RequestParam("id") Integer id, Model model){
+        heroRepo.deleteById(id);
 
         model.addAttribute("hero", heroRepo.findAll());
         return "yourHero";
     }
 
-    @RequestMapping("/kasuj")
-    public String kasuj(@RequestParam("id") Integer id, Model model){
-        heroRepo.deleteById(id);
-
-        model.addAttribute("hero", heroRepo.findAll());
-        return "pokaz";
-    }
-
-    @RequestMapping("/wyszukaj")
+    @RequestMapping("/find")
     public String wyszukaj(@RequestParam("kryterium") String kryterium, Model model){
         model.addAttribute("user", heroRepo.findAllByheroName(kryterium));
-        return "pokaz";
+        return "yourHero";
     }
 /*
     @RequestMapping("/search")
@@ -74,7 +71,7 @@ class HeroController {
         return "yourHero";
     }
 */
-    @RequestMapping("/aktualizuj")
+    @RequestMapping("/update")
     public String update(
             //@RequestParam("id") Integer id,
             @RequestParam("heroClass") String heroClass,
@@ -87,20 +84,20 @@ class HeroController {
         System.out.println(hero);
         heroRepo.save(hero);
         model.addAttribute("hero", hero);
-        return "Widok";
+        return "Widok2";
     }
 
-    @RequestMapping("/przekieruj")
+    @RequestMapping("/redirect")
     public String przekieruj(
             @RequestParam("id") Integer id, Model model
     )
             throws Exception {
         System.out.println(heroRepo.findById(id));
         model.addAttribute("hero", heroRepo.findById(id));
-        return "aktualizuj";
+        return "update";
     }
 
-    @RequestMapping("/save")
+    @RequestMapping("/saveHero")
     public String dodajemyDane(
             //@RequestParam("id") Integer id,
             //@RequestParam("hero") String hero,
