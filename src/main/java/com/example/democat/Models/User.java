@@ -13,20 +13,30 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String username;
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL, mappedBy="user",
+            fetch = FetchType.EAGER
+    )
     private List<Hero> heroes;
-    @Transient
-    boolean nowy;
+    //@Transient
+    //boolean nowy;
 
-    public User(String username) {
+    public User(Integer id, String username, List<Hero> heroes) {
+        this.id = id;
         this.username = username;
-        this.heroes = new ArrayList<>();
+        this.heroes = heroes;
     }
 
-    public User(String username, String hero) {
+    public User(Integer id, String username) {
+        this.id = id;
+        this.username = username;
     }
 
     public User() {
+    }
+
+    public User(String username, List<Hero> heroes) {
+        this.username = username;
+        this.heroes = heroes;
     }
 
     public Integer getId() {
@@ -63,7 +73,6 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", heroes=" + heroes +
-                ", nowy=" + nowy +
                 '}';
     }
 }

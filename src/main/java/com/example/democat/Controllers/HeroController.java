@@ -1,14 +1,15 @@
 package com.example.democat.Controllers;
 
 import com.example.democat.Models.Hero;
-import com.example.democat.Models.User;
 import com.example.democat.Repositories.HeroRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 class HeroController {
@@ -23,17 +24,24 @@ class HeroController {
 
     @RequestMapping("/add")
     public String dodajemyDane(
-            //@RequestParam("username") String username,
-            @RequestParam("heroClass") String heroClass,
             @RequestParam("heroName") String heroName,
+            @RequestParam("heroClass") String heroClass,
+            @RequestParam("health") String health,
             @RequestParam("level") String level,
             @RequestParam("weapon") String weapon,
             Model model)
             throws Exception {
-        Hero hero = new Hero();
-        System.out.println(hero);
-        heroRepo.save(hero);
-        model.addAttribute("hero", hero);
+        List<Hero> heroes3 = new ArrayList<>();
+        heroes3.add(new Hero (heroName));
+        heroes3.add(new Hero (heroClass));
+        heroes3.add(new Hero (health));
+        heroes3.add(new Hero (level));
+        heroes3.add(new Hero (weapon));
+
+Hero hero = new Hero(heroName, heroClass, health, level, weapon);
+        System.out.println(heroes3);
+        //heroRepo.save(heroes3);
+        model.addAttribute("hero", heroes3);
         return "Widok2";
     }
 
@@ -71,16 +79,18 @@ class HeroController {
         return "yourHero";
     }
 */
-    @RequestMapping("/update")
+
+
+@RequestMapping("/update")
     public String update(
-            //@RequestParam("id") Integer id,
-            @RequestParam("heroClass") String heroClass,
             @RequestParam("heroName") String heroName,
+            @RequestParam("heroClass") String heroClass,
+            @RequestParam("health") String health,
             @RequestParam("level") String level,
             @RequestParam("weapon") String weapon,
             Model model)
             throws Exception {
-        Hero hero = new Hero();
+        Hero hero = new Hero(heroName, heroClass, health, level, weapon);
         System.out.println(hero);
         heroRepo.save(hero);
         model.addAttribute("hero", hero);
@@ -99,16 +109,14 @@ class HeroController {
 
     @RequestMapping("/saveHero")
     public String dodajemyDane(
-            //@RequestParam("id") Integer id,
-            //@RequestParam("hero") String hero,
-            //@RequestParam("username") String username)
-            @RequestParam("heroClass") String heroClass,
             @RequestParam("heroName") String heroName,
+            @RequestParam("heroClass") String heroClass,
+            @RequestParam("health") String health,
             @RequestParam("level") String level,
             @RequestParam("weapon") String weapon)
             throws Exception
     {
-        Hero hero = new Hero();
+        Hero hero = new Hero(heroName, heroClass, health, level, weapon);
         heroRepo.save(hero);
         return "hero: "+hero+", hero=" + hero; }
 

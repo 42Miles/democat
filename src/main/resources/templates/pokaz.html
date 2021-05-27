@@ -55,17 +55,17 @@
     <tr>
         <th scope="col">Username</th>
         <th scope="col">Your hero</th>
-        <!--<th scope="col">Hero name</th>
+        <th scope="col">Hero name</th>
         <th scope="col">Hero class</th>
-        <th scope="col">Level</th>-->
+        <th scope="col">Level</th>
         <th scope="col">Cancel</th>
         <th scope="col">Update</th>
     </tr>
     </thead>
-    <tbody>
+    <body>
     <tr  th:each="wpis: ${user}">
         <td th:text="${wpis.username}">Username</td>
-        <!--<td th:text="${wpis.hero}">Hero</td>-->
+        <td th:text="${wpis.heroes}">Hero</td>
 
         <!--<td th:text="${wpis.heroName}">Hero name</td>
         <td th:text="${wpis.heroClass}">Hero class</td>
@@ -86,7 +86,7 @@
             </a>
 
     </tr>
-    </tbody>
+    </body>
 </table>
 </div>
 </body>

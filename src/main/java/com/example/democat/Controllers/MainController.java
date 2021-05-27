@@ -1,14 +1,16 @@
 package com.example.democat.Controllers;
 
+import com.example.democat.Models.Hero;
 import com.example.democat.Models.User;
 import com.example.democat.Repositories.UserRepo;
-import com.example.democat.Repositories.HeroRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 class MainController {
@@ -24,13 +26,27 @@ class MainController {
     @RequestMapping("/dodaj")
     public String dodajemyDane(
             @RequestParam("username") String username,
-            @RequestParam("hero") String hero,
-            //@RequestParam("heroClass") String heroClass,
+            @RequestParam("hero1") String hero1,
             //@RequestParam("heroName") String heroName,
+            //@RequestParam("heroClass") String heroClass,
+            //@RequestParam("health") String health,
             //@RequestParam("level") String level,
+            //@RequestParam("weapon") String weapon,
+            //@RequestParam("hero2") String hero2,
+            //@RequestParam("hero3") String hero3,
             Model model)
             throws Exception {
-        User user = new User(username, hero);
+
+        List<Hero> heroes2 = new ArrayList<>();
+        heroes2.add(new Hero (hero1));
+        //heroes2.add(new Hero (heroName));
+        //heroes2.add(new Hero (heroClass));
+        //heroes2.add(new Hero (health));
+        //heroes2.add(new Hero (level));
+        //heroes2.add(new Hero (weapon));
+        //heroes2.add(new Hero (hero2));
+        //heroes2.add(new Hero (hero3));
+        User user = new User(username, heroes2);
         System.out.println(user);
         userRepo.save(user);
         model.addAttribute("user", user);
@@ -42,8 +58,6 @@ class MainController {
         for (User user : userRepo.findAll()) {
             System.out.println(user);
         }
-
-
         model.addAttribute("user", userRepo.findAll());
         return "pokaz";
     }
@@ -63,15 +77,11 @@ class MainController {
         return "pokaz";
     }
 
-
+/*
     @RequestMapping("/aktualizuj")
     public String update(
-            //@RequestParam("id") Integer id,
             @RequestParam("username") String username,
             @RequestParam("hero") String hero,
-            //@RequestParam("heroClass") String heroClass,
-            //@RequestParam("heroName") String heroName,
-            //@RequestParam("level") String level,
             Model model)
             throws Exception {
         User user = new User(username, hero);
@@ -80,7 +90,7 @@ class MainController {
         model.addAttribute("user", user);
         return "Widok";
     }
-
+*/
     @RequestMapping("/przekieruj")
     public String przekieruj(
             @RequestParam("id") Integer id, Model model
@@ -91,20 +101,15 @@ class MainController {
         return "aktualizuj";
     }
 
-    @RequestMapping("/save")
+/*    @RequestMapping("/save")
     public String dodajemyDane(
-            //@RequestParam("id") Integer id,
-            @RequestParam("hero") String hero,
-            @RequestParam("username") String username)
-            //@RequestParam("heroClass") String heroClass,
-            //@RequestParam("heroName") String heroName,
-            //@RequestParam("level") String level)
+            @RequestParam("username") String username,
+            @RequestParam("hero") String hero)
             throws Exception
     {
         User user = new User(username, hero);
-        //heroRepo.save(hero);
         userRepo.save(user);
         return "user: "+user+", hero=" + hero; }
-
+*/
 
 }

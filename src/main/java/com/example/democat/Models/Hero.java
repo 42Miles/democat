@@ -7,7 +7,7 @@ import java.util.Objects;
 @Table
 public class Hero {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer level;
     private String weapon;
@@ -16,6 +16,7 @@ public class Hero {
     private String heroClass;
 
     @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "user")
     private User user;
 
     public Hero(Integer level, String weapon, Integer health, String heroName, String heroClass, User user) {
@@ -27,8 +28,17 @@ public class Hero {
         this.user = user;
     }
 
-    public Hero() {
+    public Hero(String heroName) {
+        this.heroName = heroName;
     }
+
+    public Hero(String heroName, String heroClass, String health, String level, String weapon) {
+    }
+
+    public Hero() {
+
+    }
+
 
     public Integer getId() {
         return id;

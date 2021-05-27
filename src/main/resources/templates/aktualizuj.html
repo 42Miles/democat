@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="pl">
     <head>
         <meta charset="UTF-8">
@@ -10,44 +10,23 @@
 <body>
 <form   th:action="@{/aktualizuj}" th:object="${user}">
 
-    <table>
-        <div class="col-md-4 mb-3">
-            <label for="validationTooltipUsername" class="form-label">Enter your username</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-                </div>
-                <input name="username" th:field="*{username}" type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
-                <div class="invalid-tooltip">
-                    Please choose a unique and valid username.
-                </div>
+    <div class="col-md-4 mb-3">
+        <label for="validationTooltipUsername" class="form-label">Enter your username</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+            </div>
+            <input name="username" th:field="*{username}" type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+            <div class="invalid-tooltip">
+                Please choose a unique and valid username.
             </div>
         </div>
-        <label for="validationTooltipUsername" class="form-label">Choose a name for your hero</label>
-        <div class="col-md-4 mb-3">
-            <input name="heroName" th:field="*{heroName}" type="text" class="form-control" aria-label="Sizing example input" placeholder="Hero Name" aria-describedby="inputGroup-sizing-default">
-        </div>
-        <label for="validationTooltipUsername" class="form-label">Choose a class</label>
-        <div class="col-md-4 mb-3">
+    </div>
+    <label for="validationTooltipUsername" class="form-label">Choose a name for your hero</label>
+    <div class="col-md-4 mb-3">
+        <input name="hero" th:field="*{heroes}" type="text" class="form-control" aria-label="Sizing example input" placeholder="Hero Name" aria-describedby="inputGroup-sizing-default">
+    </div>
 
-            <select name="heroClass" th:field="*{heroClass}" class="form-select" id="inlineFormCustomSelectPref">
-                <option value="Warrior">Warrior</option>
-                <option value="Paladin">Paladin</option>
-                <option value="Hunter">Hunter</option>
-                <option value="Rogue">Rogue</option>
-                <option value="Priest">Priest</option>
-                <option value="Shaman">Shaman</option>
-                <option value="Mage">Mage</option>
-                <option value="Warlock">Warlock</option>
-                <option value="Druid">Druid</option>
-            </select>
-            <div class="invalid-feedback">Chose class of your hero!</div>
-        </div>
-            <label for="validationTooltipUsername" class="form-label">Enter hero level</label>
-            <div class="col-md-4 mb-3">
-                <input name="level" th:field="*{level}" type="text" class="form-control" aria-label="Sizing example input" placeholder="Level" aria-describedby="inputGroup-sizing-default">
-                <input type="hidden" name="id" th:field="*{id}">
-            </div>
         <td colspan="2">
             <button type="Submit" class="btn btn-outline-dark">Submit</button>
         </td>
