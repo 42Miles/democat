@@ -9,9 +9,9 @@ public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Integer level;
+    private String level;
     private String weapon;
-    private Integer health;
+    private String health;
     private String heroName;
     private String heroClass;
 
@@ -19,7 +19,7 @@ public class Hero {
     @JoinColumn (name = "user")
     private User user;
 
-    public Hero(Integer level, String weapon, Integer health, String heroName, String heroClass, User user) {
+    public Hero(String level, String weapon, String health, String heroName, String heroClass, User user) {
         this.level = level;
         this.weapon = weapon;
         this.health = health;
@@ -33,6 +33,12 @@ public class Hero {
     }
 
     public Hero(String heroName, String heroClass, String health, String level, String weapon) {
+        this.level = level;
+        this.weapon = weapon;
+        this.health = health;
+        this.heroName = heroName;
+        this.heroClass = heroClass;
+        this.user = user;
     }
 
     public Hero() {
@@ -48,11 +54,11 @@ public class Hero {
         this.id = id;
     }
 
-    public Integer getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -64,11 +70,11 @@ public class Hero {
         this.weapon = weapon;
     }
 
-    public Integer getHealth() {
+    public String getHealth() {
         return health;
     }
 
-    public void setHealth(Integer health) {
+    public void setHealth(String health) {
         this.health = health;
     }
 

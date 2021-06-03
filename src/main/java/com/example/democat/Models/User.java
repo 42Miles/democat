@@ -17,8 +17,6 @@ public class User {
             fetch = FetchType.EAGER
     )
     private List<Hero> heroes;
-    //@Transient
-    //boolean nowy;
 
     public User(Integer id, String username, List<Hero> heroes) {
         this.id = id;

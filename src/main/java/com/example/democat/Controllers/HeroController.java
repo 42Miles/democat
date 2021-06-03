@@ -38,7 +38,7 @@ class HeroController {
         heroes3.add(new Hero (level));
         heroes3.add(new Hero (weapon));
 
-Hero hero = new Hero(heroName, heroClass, health, level, weapon);
+        Hero hero = new Hero(heroName, heroClass, health, level, weapon);
         System.out.println(heroes3);
         //heroRepo.save(heroes3);
         model.addAttribute("hero", heroes3);
@@ -72,16 +72,16 @@ Hero hero = new Hero(heroName, heroClass, health, level, weapon);
         model.addAttribute("user", heroRepo.findAllByheroName(kryterium));
         return "yourHero";
     }
-/*
+
     @RequestMapping("/search")
     public String search(@RequestParam("kryterium") String kryterium, Model model){
         model.addAttribute("hero", heroRepo.findAllByheroName(kryterium));
         return "yourHero";
     }
-*/
 
 
-@RequestMapping("/update")
+
+    @RequestMapping("/update")
     public String update(
             @RequestParam("heroName") String heroName,
             @RequestParam("heroClass") String heroClass,

@@ -27,25 +27,11 @@ class MainController {
     public String dodajemyDane(
             @RequestParam("username") String username,
             @RequestParam("hero1") String hero1,
-            //@RequestParam("heroName") String heroName,
-            //@RequestParam("heroClass") String heroClass,
-            //@RequestParam("health") String health,
-            //@RequestParam("level") String level,
-            //@RequestParam("weapon") String weapon,
-            //@RequestParam("hero2") String hero2,
-            //@RequestParam("hero3") String hero3,
             Model model)
             throws Exception {
 
         List<Hero> heroes2 = new ArrayList<>();
         heroes2.add(new Hero (hero1));
-        //heroes2.add(new Hero (heroName));
-        //heroes2.add(new Hero (heroClass));
-        //heroes2.add(new Hero (health));
-        //heroes2.add(new Hero (level));
-        //heroes2.add(new Hero (weapon));
-        //heroes2.add(new Hero (hero2));
-        //heroes2.add(new Hero (hero3));
         User user = new User(username, heroes2);
         System.out.println(user);
         userRepo.save(user);
@@ -77,20 +63,24 @@ class MainController {
         return "pokaz";
     }
 
-/*
+
     @RequestMapping("/aktualizuj")
     public String update(
             @RequestParam("username") String username,
-            @RequestParam("hero") String hero,
+            @RequestParam("hero") String hero1,
             Model model)
             throws Exception {
-        User user = new User(username, hero);
+        List<Hero> heroes2 = new ArrayList<>();
+
+        heroes2.add(new Hero (hero1));
+
+        User user = new User(username, heroes2);
         System.out.println(user);
         userRepo.save(user);
         model.addAttribute("user", user);
         return "Widok";
     }
-*/
+
     @RequestMapping("/przekieruj")
     public String przekieruj(
             @RequestParam("id") Integer id, Model model
@@ -101,15 +91,5 @@ class MainController {
         return "aktualizuj";
     }
 
-/*    @RequestMapping("/save")
-    public String dodajemyDane(
-            @RequestParam("username") String username,
-            @RequestParam("hero") String hero)
-            throws Exception
-    {
-        User user = new User(username, hero);
-        userRepo.save(user);
-        return "user: "+user+", hero=" + hero; }
-*/
 
 }
